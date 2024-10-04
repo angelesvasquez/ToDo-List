@@ -1,2 +1,2 @@
 # ToDo-List
-![image](https://github.com/user-attachments/assets/a42b55bd-c4e8-4b4e-9d1f-9919ae6cbab3)
+![image](https://github.com/user-attachments/assets/df61cf3a-b584-4802-85bc-824ccc379235)
