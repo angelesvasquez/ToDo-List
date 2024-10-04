@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:'Mulish', sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; 
+}
+
+.container{
+    background-color: rgb(243, 246, 247);
+    width: 600px;
+    margin: 50px;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: rgba(1, 9, 49, 0.2) 0px 7px 29px 0px;
+}
+
+h1{
+    color: rgb(0, 26, 87);
+    text-align: center;
+}
+
+.new-task{
+    margin: 25px 10px 15px 0px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    border: 1px solid #1d1d1d;
+    outline: none;
+    width: auto;
+    width: 420px;
+    height: 43px;
+}
+.enviar{
+    color: white;
+    height: 35px;
+    width: 80px;;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: rgb(30, 67, 118);
+    border: none;
+    cursor: pointer;
+    font-weight: 650;
+    letter-spacing: 0.06rem;
+}
+ul{
+    list-style-type: none;
+}
+
+.container-task{
+    position: relative;
+    justify-content: end;
+    color: #1d1d1d;
+    font-weight: 500;
+    background-color: rgb(255, 255, 255);
+    padding: 7px 10px;
+    border: solid 1px rgb(0, 25, 83);
+    margin: 10px 0px;
+    border-radius: 5px;
+  
+}
+
+.container-task span {
+    max-width: calc(100% - 40px);
+    font-size: 15px;
+    overflow-wrap: break-word; /* Permitir que el texto se divida en palabras */
+}
+.container-task input[type="checkbox"]{
+    width: 25px;
+    height: 18px;
+    margin: 5px 5px 0px 0px;
+    cursor: pointer;
+}
+.icono1{
+    right: 12px;
+    top: 9px;
+    position: absolute;
+    height: 24px;
+    width: 24px;
+}
+.icono2{
+    right: 40px;
+    top: 9px;
+    position: absolute;
+    height: 24px;
+    width: 24px;
+}
+.btn-icono{
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 10px;
+}
+.options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-option{
+    margin: 10px 1px;
+    padding: 10px 13px;
+    background-color: rgb(219, 228, 241);
+    border: solid 1px rgb(0, 25, 83);
+    border-radius: 5px;
+    color: #000432;
+    font-weight: 550;
+    cursor: pointer;
+}

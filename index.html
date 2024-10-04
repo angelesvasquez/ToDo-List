@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TO DO LIST</h1>
+        <form id="new-task">
+            <input class="new-task" name="task" id="task" autocomplete="off" autofocus placeholder="New task"> 
+            <input type="submit" class="enviar" value="Add" id="add-task">
+        </form>
+        <ul id="tasks">
+        </ul>
+        <div class="options">
+            <button class ="btn-option" id="marcarTodo">Marcar todo</button>
+            <button class="btn-option"  id="desmarcarTodo">Desmarcar todo</button>
+            <button class="btn-option" id="eliminarTodo">Eliminar todo</button>
+        </div>   
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => { //Asegura que el HTML se cargo antes
+        document.querySelector('#new-task').onsubmit = (e) => { //Se selecciona el formulario con id=new-task
+            e.preventDefault();
+            agregarTarea(); 
+        };
+    });
+    document.querySelector('#marcarTodo').addEventListener('click', marcarTodo);
+    document.querySelector('#eliminarTodo').addEventListener('click', eliminarTodo);
+    document.querySelector('#desmarcarTodo').addEventListener('click', desmarcarTodo);
+
+    function agregarTarea(){
+        const taskValue = document.querySelector('#task').value.trim(); //Se toma el valor del input
+        if(!taskValue) return false;    //Si la tarea esta vacia retornamos
+        
+        const lista = document.createElement('li');    //Crea un elemento tipo lista                           
+        const div = document.createElement('div');      //creamos un div para toda la tarea junto con botones
+        div.className = "container-task";
+
+        const checkbox = document.createElement("input");        // crea un input 
+        checkbox.setAttribute("type", "checkbox");               //de tipo checkbox para las tareas
+        div.appendChild(checkbox);                               //Se añade el checkbox creado a lista
+        
+        const taskText = document.createElement('span');
+        taskText.textContent = taskValue;
+        div.appendChild(taskText);
+        // Botón editar
+        const btnEditar = document.createElement('button');
+        const imgEditar = document.createElement('img');
+        imgEditar.src = 'imagenes/editar.png'; // Ruta de la imagen de editar
+        imgEditar.alt = 'Editar';
+        imgEditar.className = 'icono2'; // Clase para CSS
+        btnEditar.appendChild(imgEditar);
+        btnEditar.className = "btn-icono";
+        div.appendChild(btnEditar);
+         // Botón eliminar
+        const btnEliminar = document.createElement('button');
+        const imgEliminar = document.createElement('img');
+        imgEliminar.src = 'imagenes/tacho.png'; // Ruta de la imagen de eliminar
+        imgEliminar.alt = 'Eliminar';
+        imgEliminar.className = 'icono1'; // Clase para CSS
+        btnEliminar.appendChild(imgEliminar);
+        btnEliminar.className = "btn-icono";
+        div.appendChild(btnEliminar);
+
+        lista.appendChild(div);
+        document.querySelector('#tasks').appendChild(lista);  //se añade al final de la lista de ol id=tasks
+        document.querySelector('#task').value = ''; //Limpiamos el input
+        
+        checkbox.addEventListener('change', () => {
+            marcarTarea(lista, checkbox); 
+        }); 
+        
+        btnEditar.addEventListener('click', () => {
+            editarTarea(taskText); 
+        }); 
+
+        btnEliminar.addEventListener('click', () => {
+           eliminarTarea(lista); 
+        });
+        
+ 
+    }
+    function marcarTarea(lista, checkbox){
+        if(checkbox.checked){
+            lista.style.textDecoration = 'line-through'; 
+        }
+        else{
+            lista.style.textDecoration = 'none';
+        }
+    }
+    function editarTarea(taskText){
+        const newtask = prompt("Nueva tarea:", taskText.textContent);
+        if(newtask.trim() != "") { 
+            taskText.textContent = newtask;
+        }
+        else alert("La tarea esta vacía.")
+    }
+    function eliminarTarea(lista){
+        lista.remove();
+    }
+    function marcarTodo(){
+        const tareasTotales = document.querySelectorAll('#tasks li');
+        tareasTotales.forEach(task => {
+            const checkbox = task.querySelector('input[type="checkbox"]')
+            task.style.textDecoration = 'line-through';
+            checkbox.checked = true;
+            
+        });
+    }
+    function desmarcarTodo(){
+        const tareasTotales = document.querySelectorAll('#tasks li');
+        tareasTotales.forEach(task => {
+            const checkbox = task.querySelector('input[type="checkbox"]')
+            task.style.textDecoration = 'none';
+            checkbox.checked = false;
+        });
+    }
+    function eliminarTodo(){
+        const tareasTotales = document.querySelectorAll('#tasks li');
+        tareasTotales.forEach(tarea =>{
+            tarea.remove();
+        });
+    }
+</script>
+</html>
